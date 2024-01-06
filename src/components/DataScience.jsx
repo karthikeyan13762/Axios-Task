@@ -1,99 +1,93 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
 function DataScience() {
+
+  const [firstname, setFirstname] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [id, setId] = useState("");
+  const navigate = useNavigate();
+
+  const updateUser = async () => {
+    await axios.put(`https://659908a6a20d3dc41cef2cb9.mockapi.io/users/${id}`, {
+      firstname,
+      lastName,
+      email,
+    });
+    setFirstname("");
+    setLastName("");
+    setEmail("");
+    navigate("/read");
+  };
+
+  useEffect(() => {
+    setId(localStorage.getItem("id"));
+    setFirstname(localStorage.getItem("firstname"));
+    setLastName(localStorage.getItem("lastName"));
+    setEmail(localStorage.getItem("email"));
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    updateUser();
+  };
+
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header datascience-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className=" datasceience-body text-center">
-              <b>Best Data Science Books to Learn in 2024</b>
-            </div>
-          </div>
+    <div className="container col-lg-5">
+          <div className="text-center">Update Operation</div>
+      <form
+        onSubmit={handleSubmit}
+        className="shadow-lg p-3 mb-5 bg-white rounded"
+      >
+        <div className="form-group mt-3">
+          <label htmlFor="name1">Name</label>
+          <input
+            required
+            onChange={(event) => setFirstname(event.target.value)}
+            value={firstname}
+            type="text"
+            className="form-control"
+            id="name1"
+            placeholder="FirstName"
+          />
+          <br />
+          <label htmlFor="name2">Name</label>
+          <input
+            required
+            onChange={(event) => setLastName(event.target.value)}
+            value={lastName}
+            type="text"
+            className="form-control"
+            id="name2"
+            placeholder="LastName"
+          />
         </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header datascience-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className=" datasceience-body text-center">
-              <b>Top 10 High Paying Non-Coding Jobs in Data Science in 2024</b>
-            </div>
-          </div>
+        <div className="form-group mt-3">
+          <label htmlFor="exampleInputEmail1">Email address</label>
+          <input
+            required
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <small id="emailHelp" className="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small>
         </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header datascience-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className=" datasceience-body text-center">
-              <b>Impact of Certification Programs on Hiring Data Scientists</b>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header datascience-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className=" datasceience-body text-center">
-              <b>Top Product-Based Companies for Data Science Freshers</b>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header datascience-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className="card-body datasceience-body text-center">
-              <b>
-                What is the Difference between Data Science and Data
-                Engineering?
-              </b>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header datascience-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className=" datasceience-body text-center">
-              <b>Top 10 Data Science Tools in 2024</b>
-            </div>
-          </div>
-        </div>
-      </div>
+        <button type="submit" className="btn btn-primary mt-3">
+          Update
+        </button>
+      </form>
     </div>
   );
 }
+
 
 export default DataScience;
