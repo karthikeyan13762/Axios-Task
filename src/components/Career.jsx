@@ -1,99 +1,82 @@
-import React from "react";
-
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Career() {
+
+  const [firstname, setFirstname] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const postData = async (event) => {
+    event.preventDefault();
+  
+
+    try {
+      await axios.post("https://659908a6a20d3dc41cef2cb9.mockapi.io/users", {
+        firstname,
+        lastName,
+        email,
+      });
+
+      navigate("/read");
+    } catch (error) {
+      console.error("Error posting data:", error);
+    }
+  };
+
+
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header career-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className="card-body career-body text-center">
-              <b>UI/UX Designer Job Description and Roles & Responsibilities</b>
-            </div>
-          </div>
+    <div className="container col-5">
+      <div className="text-center">Create Operation</div>
+      <form
+        className="shadow-lg p-3 mb-5 bg-white rounded"
+        onSubmit={(event) => postData(event)}
+      >
+        <div className="form-group mt-3 ">
+          <label htmlFor="name1">Name</label>
+          <input
+            onChange={(event) => setFirstname(event.target.value)}
+            value={firstname}
+            type="text"
+            className="form-control"
+            id="name1"
+            placeholder="FirstName"
+            required
+          />
+          <br />
+          <label htmlFor="name2">Name</label>
+          <input
+            onChange={(event) => setLastName(event.target.value)}
+            value={lastName}
+            type="text"
+            className="form-control"
+            id="name2"
+            placeholder="LastName"
+            required
+          />
         </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header career-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className="card-body career-body text-center">
-              <b>Top 5 IT Jobs for Economics Students</b>
-            </div>
-          </div>
+        <div className="form-group mt-3">
+          <label htmlFor="exampleInputEmail1">Email address</label>
+          <input
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            required
+          />
+          <small id="emailHelp" className="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small>
         </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header career-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className="card-body career-body text-center">
-              <b>Top IT Jobs for Commerce Students: A Lucrative Career Path</b>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header career-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className="card-body career-body text-center">
-              <b>
-                Automation Test Engineer Resume: 10 Important Things To Consider
-              </b>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header career-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className="card-body career-body text-center">
-              <b>
-                Professional Civil Engineer Resume: A Guide To Attract Employers
-                in 2024
-              </b>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="card">
-            <div className="card-header career-header">
-              <img
-                className="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
-            </div>
-            <div className="card-body career-body text-center">
-              <b>9 Best Product-Based Companies for Project Management</b>
-            </div>
-          </div>
-        </div>
-      </div>
+        <button type="submit" className="btn btn-primary mt-3">
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
