@@ -4,7 +4,7 @@ import "../src/App.css";
 import All from "./components/All";
 import FullStack from "./components/FullStack";
 import DataScience from "./components/DataScience";
-import CyberSecurity from "./components/CyberSecurity";
+
 import Career from "./components/Career";
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
             <nav className="navbar navbar-expand-lg navbar-light  p-3">
               <div className="container px-4 px-lg-5 ">
                 <span className="navbar-brand d-lg-none d-sm-block">
-                  <b> Blog Category </b>
+                  <b> CRUD OPeration </b>
                 </span>
                 <button
                   className="navbar-toggler m-2"
@@ -54,14 +54,7 @@ function App() {
                         <b>Data Science</b>
                       </Link>
                     </li>
-                    <li className="nav-item mt-2">
-                      <Link
-                        className="link"
-                        to={"/blog/category/cyber-security/"}
-                      >
-                        <b className="">Cyber Security</b>
-                      </Link>
-                    </li>
+                    
                     <li className="nav-item  mt-2">
                       <Link className="link" to={"/blog/category/career/"}>
                         <b>Career</b>
@@ -75,7 +68,7 @@ function App() {
           </div>
         </div>
       </div>
-
+      <h1 className="mt-2 text-center">CRUD Operation</h1>
       <Routes>
         <Route path="/blog/" element={<All />} />
         <Route
@@ -83,10 +76,7 @@ function App() {
           element={<FullStack />}
         />
         <Route path="/blog/category/data-science/" element={<DataScience />} />
-        <Route
-          path="/blog/category/cyber-security/"
-          element={<CyberSecurity />}
-        />
+       
         <Route path="/blog/category/career/" element={<Career />} />
       </Routes>
     </Router>

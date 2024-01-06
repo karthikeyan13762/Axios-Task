@@ -12,7 +12,7 @@ function All() {
     localStorage.setItem("firstname", firstname);
     localStorage.setItem("lastName", lastName);
     localStorage.setItem("email", email);
-    navigate("/update");
+    navigate("/blog/category/data-science");
   };
 
 

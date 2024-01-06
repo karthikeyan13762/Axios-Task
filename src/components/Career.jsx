@@ -19,7 +19,7 @@ function Career() {
         email,
       });
 
-      navigate("/read");
+      navigate("/blog");
     } catch (error) {
       console.error("Error posting data:", error);
     }

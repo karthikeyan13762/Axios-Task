@@ -19,7 +19,7 @@ function DataScience() {
     setFirstname("");
     setLastName("");
     setEmail("");
-    navigate("/read");
+    navigate("/blog");
   };
 
   useEffect(() => {
