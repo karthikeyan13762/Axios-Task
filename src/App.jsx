@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "../src/App.css";
-import All from "./components/All";
-import FullStack from "./components/FullStack";
-import DataScience from "./components/DataScience";
+import Read from "./components/Read";
 
-import Career from "./components/Career";
+import Update from "./components/Update";
+
+import Create from "./components/Create";
 function App() {
   return (
     <Router>
@@ -16,6 +16,7 @@ function App() {
               <div className="container px-4 px-lg-5 ">
                 <span className="navbar-brand d-lg-none d-sm-block">
                   <b> CRUD OPeration </b>
+                  
                 </span>
                 <button
                   className="navbar-toggler m-2"
@@ -34,30 +35,21 @@ function App() {
                 >
                   <ul className="navbar-nav m-auto mt-sm-2">
                     <li className="nav-item  mt-2">
-                      <Link className="link " to={"/blog/"}>
-                        <b>All</b>
+                      <Link className="link" to={"/Create/"}>
+                        <b>CREATE</b>
                       </Link>
                     </li>
                     <li className="nav-item  mt-2">
-                      <Link
-                        className="link  mt-2"
-                        to={"/blog/category/full-stack-development/"}
-                      >
-                        <b>Full Stack Development</b>
+                      <Link className="link " to={"/Read/Delete/Update/"}>
+                        <b>READ/DELETE</b>
                       </Link>
                     </li>
                     <li className="nav-item  mt-2">
                       <Link
                         className="link"
-                        to={"/blog/category/data-science/"}
+                        to={"/Update/"}
                       >
-                        <b>Data Science</b>
-                      </Link>
-                    </li>
-                    
-                    <li className="nav-item  mt-2">
-                      <Link className="link" to={"/blog/category/career/"}>
-                        <b>Career</b>
+                        <b>UPDATE</b>
                       </Link>
                     </li>
                   </ul>
@@ -68,16 +60,15 @@ function App() {
           </div>
         </div>
       </div>
-      <h1 className="mt-2 text-center">CRUD Operation</h1>
+      <div>
+        <p className="mt-2 text-center CRUD-Operation ">CRUD Operation</p>
+      </div>
       <Routes>
-        <Route path="/blog/" element={<All />} />
-        <Route
-          path="/blog/category/full-stack-development/"
-          element={<FullStack />}
-        />
-        <Route path="/blog/category/data-science/" element={<DataScience />} />
-       
-        <Route path="/blog/category/career/" element={<Career />} />
+        <Route path="/Read/Delete/Update/" element={<Read />} />
+        
+        <Route path="/Update/" element={<Update />} />
+
+        <Route path="/Create/" element={<Create />} />
       </Routes>
     </Router>
   );

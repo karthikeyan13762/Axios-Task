@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
-function All() {
+function Read() {
   const [apidata, setApidatat] = useState([]);
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ function All() {
     localStorage.setItem("firstname", firstname);
     localStorage.setItem("lastName", lastName);
     localStorage.setItem("email", email);
-    navigate("/blog/category/data-science");
+    navigate("/Update");
   };
 
 
@@ -20,9 +20,9 @@ function All() {
     await axios.delete(
       "https://659908a6a20d3dc41cef2cb9.mockapi.io/users/" + id
     );
-    callApi();
+    cAllApi();
   };
-  const callApi = async () => {
+  const cAllApi = async () => {
     const res = await axios.get(
       "https://659908a6a20d3dc41cef2cb9.mockapi.io/users"
     );
@@ -30,14 +30,14 @@ function All() {
     setApidatat(res.data);
   };
   useEffect(() => {
-    callApi();
+    cAllApi();
   }, []);
   return (
     <>
       <div className="container mt-4">
         <div className="text-center">Read , Update , Delete and Operation</div>
         <div className="table-responsive">
-          <table className="table table-bordered">
+          <table className="table table-bordered  bg-white">
             <thead>
               <tr>
                 <th scope="col">Roll No</th>
@@ -89,4 +89,4 @@ function All() {
   );
 }
 
-export default All
+export default Read

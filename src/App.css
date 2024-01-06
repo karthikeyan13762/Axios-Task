@@ -100,19 +100,16 @@ nav {
 body {
   background-color: rgb(43, 98, 147);
   color: white;
+  overflow: hidden;
 }
-form{
+form,table{
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 tr{
   text-align: center;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+ border: 2px solid gray;
 }
-.position-sticky{
-  position: fixed;
-  top: 15px;
-  background-color: rgba(43, 98, 147,.5);
-  width: 100vw;
-  display: flex;
-  justify-content: center;
+.CRUD-Operation{
+  font-weight: bold;
+  font-size: 2em;
 }
