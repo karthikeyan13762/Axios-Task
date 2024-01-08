@@ -14,21 +14,23 @@ function App() {
           <div className="col">
             <nav className="navbar navbar-expand-lg navbar-light  p-3">
               <div className="container px-4 px-lg-5 ">
-                <span className="navbar-brand d-lg-none d-sm-block">
-                  <b> CRUD OPeration </b>
-                  
-                </span>
-                <button
-                  className="navbar-toggler m-2"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent"
-                  aria-expanded="true"
-                  aria-label="Toggle navigation"
-                >
-                  <span className="navbar-toggler-icon"></span>
-                </button>
+                <div className="d-flex">
+                  <span className="navbar-brand d-lg-none d-sm-block">
+                    <b> CRUD OPeration </b>
+                  </span>
+                  <button
+                    className="navbar-toggler m-2"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="true"
+                    aria-label="Toggle navigation"
+                  >
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                </div>
+
                 <div
                   className="navbar-collapse collapse show"
                   id="navbarSupportedContent"
@@ -45,10 +47,7 @@ function App() {
                       </Link>
                     </li>
                     <li className="nav-item  mt-2">
-                      <Link
-                        className="link"
-                        to={"/Update/"}
-                      >
+                      <Link className="link" to={"/Update/"}>
                         <b>UPDATE</b>
                       </Link>
                     </li>
@@ -65,7 +64,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/Read/Delete/Update/" element={<Read />} />
-        
+
         <Route path="/Update/" element={<Update />} />
 
         <Route path="/Create/" element={<Create />} />
